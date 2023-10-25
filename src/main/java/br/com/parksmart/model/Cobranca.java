@@ -1,6 +1,7 @@
 package br.com.parksmart.model;
 
 import br.com.parksmart.model.enums.MeioPagamentoEnum;
+import br.com.parksmart.model.enums.ModeloCobrancaEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,21 +10,21 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Document
-public class Condutor {
+public class Cobranca {
     @Id
-    private String cpf;
-    private String nome;
-    private String endereco;
-    private String telefone;
-    private String email;
+    private String codigoCobranca;
     @DBRef
-    private List<Veiculo> veiculos;
-    private MeioPagamentoEnum meioPagamentoPreferencial;
+    private Estadia estadia;
+    private ModeloCobrancaEnum modeloCobranca;
+    private MeioPagamentoEnum meioPagamento;
+    private BigDecimal valorPago;
+    @DBRef
+    private Recibo recibo;
 }
