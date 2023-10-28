@@ -1,5 +1,6 @@
 package br.com.parksmart.dto.response;
 
+import br.com.parksmart.model.Cobranca;
 import br.com.parksmart.model.Condutor;
 import br.com.parksmart.model.Estadia;
 import br.com.parksmart.model.Veiculo;
@@ -18,6 +19,7 @@ public class EstadiaResponse {
     private String codigoEstadia;
     private Condutor condutor;
     private Veiculo veiculo;
+    private Cobranca cobranca;
     private String codigoParquimetro;
     private Instant horarioEntrada;
     private Instant horarioSaida;
@@ -26,6 +28,7 @@ public class EstadiaResponse {
         setCodigoEstadia(estadia.getCodigoEstadia());
         setCondutor(estadia.getCondutor());
         setVeiculo(estadia.getVeiculo());
+        setCobranca(estadia.getCobranca());
         setCodigoParquimetro(estadia.getCodigoParquimetro());
         setHorarioEntrada(estadia.getHorarioEntrada());
         setHorarioSaida(estadia.getHorarioSaida());

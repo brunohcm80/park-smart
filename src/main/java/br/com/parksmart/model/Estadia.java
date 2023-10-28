@@ -26,10 +26,13 @@ public class Estadia {
     private String codigoParquimetro;
     private Instant horarioEntrada;
     private Instant horarioSaida;
+    @DBRef
+    private Cobranca cobranca;
 
-    public Estadia(Condutor condutor, Veiculo veiculo, String codigoParquimetro) {
+    public Estadia(Condutor condutor, Veiculo veiculo, String codigoParquimetro, Cobranca cobranca) {
         this.condutor = condutor;
         this.veiculo = veiculo;
         this.codigoParquimetro = codigoParquimetro;
+        this.cobranca = cobranca;
     }
 }

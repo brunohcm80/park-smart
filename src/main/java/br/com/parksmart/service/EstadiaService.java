@@ -26,10 +26,15 @@ public class EstadiaService {
     @Autowired
     private VeiculoRepository veiculoRepository;
 
+    @Autowired
+    private CobrancaService cobrancaService;
+
     public EstadiaResponse iniciarEstadia (EstadiaRequest estadiaRequest){
-        Estadia estadia = estadiaRequest.toEstadia(condutorRepository, veiculoRepository);
+        Estadia estadia = estadiaRequest.toEstadia(condutorRepository, veiculoRepository, cobrancaService);
+
         estadia.setHorarioEntrada(Instant.now());
         estadiaRepository.save(estadia);
+
         return new EstadiaResponse().toEstadiaResponse(estadia);
     }
 
@@ -54,6 +59,8 @@ public class EstadiaService {
                 .orElseThrow(()-> new IllegalArgumentException("Estadia não localizada."));
 
         estadia.setHorarioSaida(Instant.now());
+
+        cobrancaService.finalizarCobranca(estadia.getCobranca().toCobrancaResponse().toCobrancaRequest());
         estadiaRepository.save(estadia);
 
         return new EstadiaResponse().toEstadiaResponse(estadia);

@@ -1,5 +1,6 @@
 package br.com.parksmart.model;
 
+import br.com.parksmart.dto.response.CobrancaResponse;
 import br.com.parksmart.model.enums.MeioPagamentoEnum;
 import br.com.parksmart.model.enums.ModeloCobrancaEnum;
 import lombok.AllArgsConstructor;
@@ -20,11 +21,24 @@ import java.math.BigDecimal;
 public class Cobranca {
     @Id
     private String codigoCobranca;
-    @DBRef
-    private Estadia estadia;
+
     private ModeloCobrancaEnum modeloCobranca;
     private MeioPagamentoEnum meioPagamento;
-    private BigDecimal valorPago;
+    private BigDecimal valorCobranca;
     @DBRef
     private Recibo recibo;
+
+    public Cobranca(ModeloCobrancaEnum modeloCobranca, MeioPagamentoEnum meioPagamento, BigDecimal valorCobranca) {
+        this.modeloCobranca = modeloCobranca;
+        this.meioPagamento = meioPagamento;
+        this.valorCobranca = valorCobranca;
+    }
+
+    public CobrancaResponse toCobrancaResponse() {
+        return new CobrancaResponse(this.codigoCobranca,
+                this.modeloCobranca,
+                this.meioPagamento,
+                this.valorCobranca,
+                this.recibo);
+    }
 }
