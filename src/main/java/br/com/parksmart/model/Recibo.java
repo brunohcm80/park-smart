@@ -19,14 +19,14 @@ import java.time.Instant;
 public class Recibo {
     @Id
     private String codigoRecibo;
-    private Instant dataEmissaoRecibo;
+    private Instant horarioEmissaoRecibo;
     private BigDecimal valorRecibo;
 
-    public Recibo(Instant dataEmissaoRecibo) {
-        this.dataEmissaoRecibo = dataEmissaoRecibo;
+    public Recibo(Instant horarioEmissaoRecibo) {
+        this.horarioEmissaoRecibo = horarioEmissaoRecibo;
     }
 
     public ReciboResponse toReciboResponse() {
-        return new ReciboResponse (this.codigoRecibo, this.dataEmissaoRecibo, this.valorRecibo);
+        return new ReciboResponse (this.codigoRecibo, this.horarioEmissaoRecibo, this.valorRecibo);
     }
 }

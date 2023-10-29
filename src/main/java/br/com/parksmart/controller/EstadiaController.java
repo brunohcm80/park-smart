@@ -1,5 +1,6 @@
 package br.com.parksmart.controller;
 
+import br.com.parksmart.dto.request.CobrancaRequest;
 import br.com.parksmart.dto.request.EstadiaRequest;
 import br.com.parksmart.dto.response.EstadiaResponse;
 import br.com.parksmart.service.EstadiaService;
@@ -40,7 +41,8 @@ public class EstadiaController {
     }
 
     @PutMapping(value = "/finalizar/{codigoEstadia}")
-    public ResponseEntity<EstadiaResponse> finalizarEstadia (@PathVariable String codigoEstadia){
-        return ResponseEntity.ok(estadiaService.finalizarEstadia(codigoEstadia));
+    public ResponseEntity<EstadiaResponse> finalizarEstadia (@PathVariable String codigoEstadia,
+                                                             @RequestBody @Valid CobrancaRequest cobrancaRequest){
+        return ResponseEntity.ok(estadiaService.finalizarEstadia(codigoEstadia, cobrancaRequest));
     }
 }

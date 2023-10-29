@@ -19,7 +19,6 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class CobrancaRequest {
     private String codigoCobranca;
-    @NotNull
     private ModeloCobrancaEnum modeloCobranca;
     @NotNull
     private MeioPagamentoEnum meioPagamento;

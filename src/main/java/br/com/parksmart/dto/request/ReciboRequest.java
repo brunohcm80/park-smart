@@ -18,11 +18,11 @@ public class ReciboRequest  {
 
     private String codigoRecibo;
     @NotNull
-    private Instant dataEmissaoRecibo;
+    private Instant horarioEmissaoRecibo;
     @NotNull
     private BigDecimal valorRecibo;
 
     public Recibo toRecibo (){
-        return new Recibo(this.codigoRecibo, this.dataEmissaoRecibo, this.valorRecibo);
+        return new Recibo(this.codigoRecibo, this.horarioEmissaoRecibo, this.valorRecibo);
     }
 }

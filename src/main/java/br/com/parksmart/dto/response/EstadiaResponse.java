@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigInteger;
 import java.time.Instant;
 
 @Getter
@@ -19,19 +20,21 @@ public class EstadiaResponse {
     private String codigoEstadia;
     private Condutor condutor;
     private Veiculo veiculo;
-    private Cobranca cobranca;
     private String codigoParquimetro;
     private Instant horarioEntrada;
     private Instant horarioSaida;
+    private Cobranca cobranca;
+    private BigInteger quantidadeHoras;
 
-    public EstadiaResponse toEstadiaResponse (Estadia estadia) {
+    public EstadiaResponse toEstadiaResponse(Estadia estadia) {
         setCodigoEstadia(estadia.getCodigoEstadia());
         setCondutor(estadia.getCondutor());
         setVeiculo(estadia.getVeiculo());
-        setCobranca(estadia.getCobranca());
         setCodigoParquimetro(estadia.getCodigoParquimetro());
         setHorarioEntrada(estadia.getHorarioEntrada());
         setHorarioSaida(estadia.getHorarioSaida());
+        setCobranca(estadia.getCobranca());
+        setQuantidadeHoras(estadia.getQuantidadeHoras());
         return this;
     }
 }
