@@ -1,5 +1,9 @@
 package br.com.parksmart.dto.request;
 
+import br.com.parksmart.exception.CobrancaInvalidaException;
+import br.com.parksmart.exception.CondutorInvalidoException;
+import br.com.parksmart.exception.PrecoInvalidoException;
+import br.com.parksmart.exception.VeiculoInvalidoException;
 import br.com.parksmart.model.Cobranca;
 import br.com.parksmart.model.Condutor;
 import br.com.parksmart.model.Estadia;
@@ -37,14 +41,15 @@ public class EstadiaRequest {
     private BigInteger quantidadeHoras;
 
     public Estadia toEstadia (CondutorRepository condutorRepository, VeiculoRepository veiculoRepository,
-                              CobrancaService cobrancaService){
+                              CobrancaService cobrancaService)
+            throws PrecoInvalidoException, CondutorInvalidoException, VeiculoInvalidoException {
         Condutor condutor = condutorRepository
                 .findById(this.cpfCondutor)
-                .orElseThrow(()->new IllegalArgumentException("Condutor não localizado."));
+                .orElseThrow(()->new CondutorInvalidoException("Condutor não localizado."));
 
         Veiculo veiculo = veiculoRepository
                 .findById(this.placaVeiculo)
-                .orElseThrow(()->new IllegalArgumentException("Veiculo não localizado."));
+                .orElseThrow(()->new VeiculoInvalidoException("Veiculo não localizado."));
 
         CobrancaRequest cobrancaRequest = new CobrancaRequest();
         cobrancaRequest.setModeloCobranca(this.modeloCobranca);

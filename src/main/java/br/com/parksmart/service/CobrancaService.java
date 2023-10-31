@@ -2,6 +2,7 @@ package br.com.parksmart.service;
 
 import br.com.parksmart.dto.request.CobrancaRequest;
 import br.com.parksmart.dto.response.CobrancaResponse;
+import br.com.parksmart.exception.PrecoInvalidoException;
 import br.com.parksmart.model.Cobranca;
 import br.com.parksmart.model.Estadia;
 import br.com.parksmart.repository.CobrancaRepository;
@@ -20,9 +21,9 @@ public class CobrancaService {
     @Autowired
     private ReciboService reciboService;
 
-    public CobrancaResponse iniciarCobranca (CobrancaRequest cobrancaRequest){
+    public CobrancaResponse iniciarCobranca (CobrancaRequest cobrancaRequest) throws PrecoInvalidoException{
         if(precoService.consultaTabelaPrecos().isEmpty()){
-            throw new IllegalArgumentException("Tabela de Precos não definida.");
+            throw new PrecoInvalidoException("Tabela de Precos não definida.");
         }
 
         Cobranca cobranca = cobrancaRequest.toCobranca();
