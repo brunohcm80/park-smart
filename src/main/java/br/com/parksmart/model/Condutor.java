@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -26,20 +27,17 @@ public class Condutor {
     @DBRef
     private List<Veiculo> veiculos;
     private MeioPagamentoEnum meioPagamentoPreferencial;
-    
+    @Indexed
     private Endereco endereco;
-    public Condutor(String cpf, String nome, String telefone, String email, List<Veiculo> veiculos, MeioPagamentoEnum meioPagamentoPreferencial) {
+    public Condutor(String cpf, String nome, String telefone, String email, List<Veiculo> veiculos, MeioPagamentoEnum meioPagamentoPreferencial,Endereco endereco) {
         this.cpf = cpf;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.veiculos = veiculos;
         this.meioPagamentoPreferencial = meioPagamentoPreferencial;
+        this.endereco = endereco;
     }
-
-    public Condutor(String cpf, String nome, String telefone, String email, List<Veiculo> veiculos, MeioPagamentoEnum meioPagamentoPreferencial, Endereco endereco) {
-    }
-
     public CondutorResponse toCondutorResponse(){
         return new CondutorResponse(this.cpf, this.nome, this.telefone, this.email, this.veiculos, this.meioPagamentoPreferencial, this.endereco);
     }
