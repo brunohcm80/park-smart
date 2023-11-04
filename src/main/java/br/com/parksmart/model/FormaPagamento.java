@@ -27,7 +27,13 @@ public class FormaPagamento {
     private Date dtValidadeCartao;
     private String codigoPix;
 
-    public FormaPagamento(MeioPagamentoEnum tipoPagamentoPreferencial, String numeroCartao, String titularCartao, String codSeguranca, Date dtValidadeCartao) {
+    public FormaPagamento( MeioPagamentoEnum tipoPagamentoPreferencial, String numeroCartao,
+                          String titularCartao, String codSeguranca, Date dtValidadeCartao) {
+        this.tipoPagamentoPreferencial = tipoPagamentoPreferencial;
+        this.numeroCartao = numeroCartao;
+        this.titularCartao = titularCartao;
+        this.codSeguranca = codSeguranca;
+        this.dtValidadeCartao = dtValidadeCartao;
     }
 
     public FormaPagamentoResponse toFormaPagResponse() {

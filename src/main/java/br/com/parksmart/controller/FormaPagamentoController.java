@@ -23,16 +23,16 @@ public class FormaPagamentoController {
     private FormaPagamentoService service;
 
     @PostMapping(value = "/cadastrar")
-    public ResponseEntity<FormaPagamentoResponse> cadastrarCondutor (@RequestBody @Valid FormaPagamentoRequest pagamentoRequest, UriComponentsBuilder uriBuilder) throws FormaPagamentoException {
+    public ResponseEntity<FormaPagamentoResponse> cadastrarFormaPagamento (@RequestBody @Valid FormaPagamentoRequest pagamentoRequest, UriComponentsBuilder uriBuilder) throws FormaPagamentoException {
 
         FormaPagamentoResponse pagamentoResponse = service.cadastrarFormaPagamento(pagamentoRequest);
-        URI formaPagamento = uriBuilder.path("/condutor/cadastrar/{cpf}").buildAndExpand(pagamentoResponse.getCodigoFormaPagamento()).toUri();
+        URI formaPagamento = uriBuilder.path("/formapagamento/cadastrar/{codigoFormaPagamento}").buildAndExpand(pagamentoResponse.getCodigoFormaPagamento()).toUri();
 
         return ResponseEntity.created(formaPagamento).body(pagamentoResponse);
     }
 
     @GetMapping("/buscar/{codigoFormaPagamento}")
-    public ResponseEntity<FormaPagamentoResponse> detalharCondutores(@PathVariable String codigoFormaPagamento)
+    public ResponseEntity<FormaPagamentoResponse> detalharFormaPagamento(@PathVariable String codigoFormaPagamento)
             throws FormaPagamentoException {
          return ResponseEntity.ok(service.obterFormaPagamentoPorCodigo(codigoFormaPagamento));
     }

@@ -19,21 +19,22 @@ public class FormaPagamentoService {
     private FormaPagamentoRepository repository;
 
     public FormaPagamentoResponse cadastrarFormaPagamento(FormaPagamentoRequest formaPagamentoRequest) throws FormaPagamentoException {
+
         FormaPagamento pagamento = formaPagamentoRequest.toFormaPagamento();
 
-        if (pagamento.getTipoPagamentoPreferencial().equals("DEBITO") ||
-                pagamento.getTipoPagamentoPreferencial().equals("CREDITO")) {
-
-            if (pagamento.getNumeroCartao().isEmpty()) {
-                throw new FormaPagamentoException("É obrigatório informar o número do cartão");
-            }
-            if (pagamento.getDtValidadeCartao() == null) {
-                throw new FormaPagamentoException("É obrigatório informar a data de vencimento do cartao");
-            }
-            if (pagamento.getTitularCartao().isEmpty()) {
-                throw new FormaPagamentoException("É obrigatório informar o nome do titular do cartão");
-            }
-        }
+//        if (pagamento.getTipoPagamentoPreferencial().equals("DEBITO") ||
+//                pagamento.getTipoPagamentoPreferencial().equals("CREDITO")) {
+//
+//            if (pagamento.getNumeroCartao().isEmpty()) {
+//                throw new FormaPagamentoException("É obrigatório informar o número do cartão");
+//            }
+//            if (pagamento.getDtValidadeCartao() == null) {
+//                throw new FormaPagamentoException("É obrigatório informar a data de vencimento do cartao");
+//            }
+//            if (pagamento.getTitularCartao().isEmpty()) {
+//                throw new FormaPagamentoException("É obrigatório informar o nome do titular do cartão");
+//            }
+//        }
         var pagamentoSave = repository.save(pagamento);
         return new FormaPagamentoResponse(pagamentoSave);
     }

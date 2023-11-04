@@ -26,7 +26,9 @@ public class CondutorController {
     private CondutorService service;
 
     @PostMapping(value = "/cadastrar")
-    public ResponseEntity<CondutorResponse> cadastrarCondutor (@RequestBody @Valid CondutorRequest condutorRequest, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<CondutorResponse> cadastrarCondutor
+            (@RequestBody @Valid CondutorRequest condutorRequest, UriComponentsBuilder uriBuilder)
+            throws CondutorInvalidoException{
 
         CondutorResponse condutorResponse = service.cadastrarCondutor(condutorRequest);
         URI condutor = uriBuilder.path("/condutor/cadastrar/{cpf}").buildAndExpand(condutorResponse.getCpf()).toUri();
