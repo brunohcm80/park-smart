@@ -28,7 +28,7 @@
 
 ## Soluções Implementadas
 
-Fluxo de Negócio Principal (Passo-a-Passo):
+- Fluxo de Negócio Principal (Passo-a-Passo):
 
 É necessário seguir o seguinte fluxo para utilização da Solução ParkSmart:
 
