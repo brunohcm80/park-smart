@@ -1,5 +1,7 @@
 package br.com.parksmart.model;
 
+import br.com.parksmart.dto.response.CondutorResponse;
+import br.com.parksmart.dto.response.PrecoResponse;
 import br.com.parksmart.model.enums.MeioPagamentoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,17 +15,32 @@ import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Document
 public class Condutor {
     @Id
     private String cpf;
     private String nome;
-    private String endereco;
     private String telefone;
     private String email;
     @DBRef
     private List<Veiculo> veiculos;
     private MeioPagamentoEnum meioPagamentoPreferencial;
+    
+    private Endereco endereco;
+    public Condutor(String cpf, String nome, String telefone, String email, List<Veiculo> veiculos, MeioPagamentoEnum meioPagamentoPreferencial) {
+        this.cpf = cpf;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.veiculos = veiculos;
+        this.meioPagamentoPreferencial = meioPagamentoPreferencial;
+    }
+
+    public Condutor(String cpf, String nome, String telefone, String email, List<Veiculo> veiculos, MeioPagamentoEnum meioPagamentoPreferencial, Endereco endereco) {
+    }
+
+    public CondutorResponse toCondutorResponse(){
+        return new CondutorResponse(this.cpf, this.nome, this.telefone, this.email, this.veiculos, this.meioPagamentoPreferencial, this.endereco);
+    }
 }
