@@ -4,6 +4,7 @@ import br.com.parksmart.model.Cobranca;
 import br.com.parksmart.model.Recibo;
 import br.com.parksmart.model.enums.MeioPagamentoEnum;
 import br.com.parksmart.model.enums.ModeloCobrancaEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -18,11 +19,15 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CobrancaRequest {
+    @JsonIgnore
     private String codigoCobranca;
+    @JsonIgnore
     private ModeloCobrancaEnum modeloCobranca;
     @NotNull
     private MeioPagamentoEnum meioPagamento;
+    @JsonIgnore
     private BigDecimal valorCobranca;
+    @JsonIgnore
     private Recibo recibo;
 
     public Cobranca toCobranca() {

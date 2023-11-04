@@ -1,6 +1,7 @@
 package br.com.parksmart.dto.request;
 
 import br.com.parksmart.model.Preco;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,6 +15,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PrecoRequest {
+    @JsonIgnore
     private String codigoTabelaPreco;
     @NotNull
     private BigDecimal precoHoraFixa;
