@@ -33,8 +33,13 @@ Fluxo de Negócio Principal (Passo-a-Passo):
 É necessário seguir o seguinte fluxo para utilização da Solução ParkSmart:
 
 1º Efetuar o Cadastramento da Tabela de Precos através da API "/precos/cadastrar"
+
 2º Efetuar o Cadastramento do Condutor, através da api "/condutor/cadastrar"
+
 3º Efetuar o Cadastramento do Meio de pagamento do Condutor, através da api "/formapagamento/cadastrar"
+
 4º Efetuar o Cadastramento do Veículo, através da api "/veiculos/cadastrar"
+
 5º Registrar o início da Estadia do Veículo no Parquímetro através da api "/estadias/iniciar"
+
 6º Registrar o final da Estadia do Veículo via api "/estadias/finalizar" 
