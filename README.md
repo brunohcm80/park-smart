@@ -11,15 +11,20 @@
 - É necessário ter Instalado o MongoDB ou Imagem Docker do MongoDB
 
 - Para Instalar a Imagem Docker do MongoDB utilize:
+
   docker volume create VOL_MONGO
+
   docker network create NET_MONGO
+
   docker run -d --network NET_MONGO -h mongo --name mongo -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=secret -p 27017:27017 -v VOL_MONGO:/data/db mongo
 
 - Para conectar ao banco pelo compass:
+
   mongodb://mongoadmin:secret@localhost:27017/
 
 - Caso seja utilizado o MongoDB na versão Instalada é necessário comentar/descomentar as linha abaixo no arquivo "application.properties", para que fiquem da seguinte forma:
   #spring.data.mongodb.uri=mongodb://mongoadmin:secret@localhost:27017/
+
    spring.data.mongodb.uri=mongodb://localhost
   
 - Para ver as APIs disponíveis e sua documentação acessar o Endereço "/swagger-ui/index.htm" com o Software em Execução
