@@ -23,6 +23,7 @@
   mongodb://mongoadmin:secret@localhost:27017/
 
 - Caso seja utilizado o MongoDB na versão Instalada é necessário comentar/descomentar as linha abaixo no arquivo "application.properties", para que fiquem da seguinte forma:
+- 
   #spring.data.mongodb.uri=mongodb://mongoadmin:secret@localhost:27017/
 
    spring.data.mongodb.uri=mongodb://localhost
