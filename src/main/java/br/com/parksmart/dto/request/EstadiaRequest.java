@@ -44,7 +44,7 @@ public class EstadiaRequest {
                               CobrancaService cobrancaService)
             throws PrecoInvalidoException, CondutorInvalidoException, VeiculoInvalidoException {
         Condutor condutor = condutorRepository
-                .findById(this.cpfCondutor)
+                .findByCpf(this.cpfCondutor)
                 .orElseThrow(()->new CondutorInvalidoException("Condutor não localizado."));
 
         Veiculo veiculo = veiculoRepository

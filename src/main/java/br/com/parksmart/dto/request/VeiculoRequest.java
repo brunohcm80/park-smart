@@ -1,27 +1,28 @@
-package br.com.parksmart.model;
+package br.com.parksmart.dto.request;
 
-import br.com.parksmart.dto.response.VeiculoResponse;
+import br.com.parksmart.model.Veiculo;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document
-public class Veiculo {
-    @Id
+public class VeiculoRequest {
+
     private String placa;
+    @NotBlank
     private String marca;
+    @NotBlank
     private String modelo;
+    @NotBlank
     private String cor;
 
-    public VeiculoResponse toVeiculoResponse() {
-        return new VeiculoResponse(this.placa,
+    public Veiculo toVeiculo() {
+        return new Veiculo(this.placa,
                 this.marca,
                 this.modelo,
                 this.cor);

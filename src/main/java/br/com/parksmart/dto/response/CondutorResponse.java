@@ -30,13 +30,13 @@ public class CondutorResponse {
     private FormaPagamento formaPagamento;
 
     public CondutorResponse(Optional<Condutor> condutor) {
-        this.cpf = cpf;
-        this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
-        this.veiculos = veiculos;
-        this.endereco = endereco;
-        this.formaPagamento = formaPagamento;
+        this.cpf = condutor.get().getCpf();
+        this.nome = condutor.get().getNome();
+        this.telefone = condutor.get().getTelefone();
+        this.email = condutor.get().getEmail();
+        this.veiculos = condutor.get().getVeiculos();
+        this.endereco = condutor.get().getEndereco();
+        this.formaPagamento = condutor.get().getFormaPagamento();
     }
 
     public CondutorResponse toCondutorResponse(Condutor condutor) {
